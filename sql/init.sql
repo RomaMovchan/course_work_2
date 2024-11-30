@@ -4,10 +4,19 @@ CREATE TABLE IF NOT EXISTS Users (
     password VARCHAR(255) UNIQUE NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS POSTS (
+CREATE TABLE IF NOT EXISTS Posts (
     id SERIAL PRIMARY KEY,
     content TEXT NOT NULL,
     title VARCHAR(100) NOT NULL,
-    userId NUMERIC,
-    FOREIGN KEY (userId) REFERENCES Users(id)
+    user_id INT,
+    FOREIGN KEY (user_id) REFERENCES Users(id)
 );
+
+CREATE TABLE IF NOT EXISTS Tokens (
+    id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,
+    access_token TEXT NOT NULL,
+    refresh_token TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE
+)

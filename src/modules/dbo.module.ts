@@ -1,5 +1,5 @@
-import { Module } from '@nestjs/common'
-import { Pool } from 'pg'
+import { Module } from '@nestjs/common';
+import { Pool } from 'pg';
 
 const dbProvider = {
   provide: 'PG_CONNECTION',
@@ -10,7 +10,7 @@ const dbProvider = {
     password: 'password',
     port: 5433,
   }),
-}
+};
 @Module({
   providers: [dbProvider],
   exports: [dbProvider],
