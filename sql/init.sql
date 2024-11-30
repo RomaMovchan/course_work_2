@@ -17,6 +17,6 @@ CREATE TABLE IF NOT EXISTS Tokens (
     user_id INT NOT NULL,
     access_token TEXT NOT NULL,
     refresh_token TEXT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE
-)
+);
