@@ -4,8 +4,8 @@ import { UsersService } from './users.service';
 import { DbModule } from '../../system-modules/dbo.module';
 
 @Module({
-  imports: [ DbModule ],
+  imports: [DbModule],
   controllers: [UsersController],
-  providers: [UsersService]
+  providers: [UsersService],
 })
 export class UsersModule {}

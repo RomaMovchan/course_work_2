@@ -1,9 +1,11 @@
 ### Create new user
 POST http://localhost:3000/users
 Content-Type: application/json
-Authorization: anyString
 
 {
-  "username": "Test User",
+  "name": "Test User1",
   "password": "password test"
 }
+
+### Get user
+GET http://localhost:3000
