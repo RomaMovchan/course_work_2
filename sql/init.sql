@@ -1,22 +1,13 @@
-CREATE TABLE IF NOT EXISTS Tasks (
+CREATE TABLE IF NOT EXISTS Users (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100),
-    description VARCHAR(200),
-    startDate DATE,
-    endDate DATE
+    password VARCHAR(255) UNIQUE NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS TaskDetails (
+CREATE TABLE IF NOT EXISTS POSTS (
     id SERIAL PRIMARY KEY,
-    assignedPerson VARCHAR(100),
-    taskId INT,
-    FOREIGN KEY (taskId) REFERENCES Tasks(id)
+    content TEXT NOT NULL,
+    title VARCHAR(100) NOT NULL,
+    userId NUMERIC,
+    FOREIGN KEY (userId) REFERENCES Users(id)
 );
-
-INSERT INTO tasks (name, description, startDate, endDate) VALUES
-('Create table', 'Create tables User, Details', '2020-12-12', '2020-12-18'),
-('Create docker', 'Create docker file', '2020-12-14', '2020-12-18');
-
-INSERT INTO taskdetails (assignedPerson, taskId) VALUES
-('Maksym M', 1),
-('Ivan P', 2);
