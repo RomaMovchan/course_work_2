@@ -1,7 +1,8 @@
 import {
+  BadRequestException,
   Inject,
   Injectable,
-  InternalServerErrorException,
+  InternalServerErrorException
 } from '@nestjs/common';
 import { Pool } from 'pg';
 import { Post } from '../../models/posts.interface';
@@ -18,6 +19,9 @@ export class PostsService {
 
   async create(createPostDto: CreatePostDto): Promise<Post> {
     const { content, title, user_id } = createPostDto;
+    if (!content || !title || user_id === undefined) {
+      throw new BadRequestException('Please provide full data');
+    }
     try {
       const result = await this.pool.query(
         `INSERT INTO posts (content, title, user_id) VALUES ($1, $2, $3) RETURNING *`,

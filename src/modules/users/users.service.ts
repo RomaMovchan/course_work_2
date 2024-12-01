@@ -1,7 +1,8 @@
 import {
+  BadRequestException,
   Inject,
   Injectable,
-  InternalServerErrorException,
+  InternalServerErrorException
 } from '@nestjs/common';
 import { CreateUserDto } from '../../dto/users.dto';
 import { Pool } from 'pg';
@@ -15,6 +16,9 @@ export class UsersService {
   async create(createUserDto: CreateUserDto): Promise<User> {
     const saltRounds = 10;
     const { username, password } = createUserDto;
+    if (!username || !password) {
+      throw new BadRequestException('Please provide full data');
+    }
     const hashedPassword = await bcrypt.hash(password, saltRounds);
     try {
       const result = await this.pool.query(

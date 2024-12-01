@@ -8,6 +8,7 @@ import { UsersService } from '../../users/users.service';
 import { TokensService } from './tokens.service';
 import * as bcrypt from 'bcrypt';
 import { Pool } from 'pg';
+import { User } from '../../../models/user.interface';
 
 @Injectable()
 export class AuthService {
@@ -50,7 +51,7 @@ export class AuthService {
     }
   }
 
-  async login(user: any) {
+  async login(user: User) {
     const token = await this.tokensService.findAccessTokenUserId(user.id);
     if (token) {
       const isAccessTokenValid = this.validateToken(token.access_token);
