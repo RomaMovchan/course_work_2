@@ -7,5 +7,22 @@ Content-Type: application/json
   "password": "password test"
 }
 
-### Get user
-GET http://localhost:3000
+### Login user and get tokens
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "name": "Test User1",
+  "password": "password test"
+}
+
+### Create Post
+POST http://localhost:3000/posts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTczMzA2MTI1NywiZXhwIjoxNzMzMDcyMDU3fQ.vi-tiFijwYVYnmY_ANVNMEqNmbVntx2DuAcBuaQ-ROc
+
+{
+  "content": "test content",
+  "title": "test title",
+  "user_id": 2
+}
