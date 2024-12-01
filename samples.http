@@ -3,7 +3,7 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-  "name": "Test User1",
+  "username": "Test User1",
   "password": "password test"
 }
 
@@ -12,17 +12,21 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-  "name": "Test User1",
+  "username": "Test User1",
   "password": "password test"
 }
 
 ### Create Post
 POST http://localhost:3000/posts
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTczMzA2MTI1NywiZXhwIjoxNzMzMDcyMDU3fQ.vi-tiFijwYVYnmY_ANVNMEqNmbVntx2DuAcBuaQ-ROc
 
 {
-  "content": "test content",
-  "title": "test title",
+  "content": "test content redis 1",
+  "title": "test title redis 1",
   "user_id": 2
 }
+
+### Get Posts
+GET http://localhost:3000/posts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTczMzA2MTI1NywiZXhwIjoxNzMzMDcyMDU3fQ.vi-tiFijwYVYnmY_ANVNMEqNmbVntx2DuAcBuaQ-ROc

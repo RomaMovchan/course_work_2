@@ -14,12 +14,12 @@ export class UsersService {
 
   async create(createUserDto: CreateUserDto): Promise<User> {
     const saltRounds = 10;
-    const { name, password } = createUserDto;
+    const { username, password } = createUserDto;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
     try {
       const result = await this.pool.query(
-        `INSERT INTO users (name, password) VALUES ($1, $2) RETURNING *`,
-        [name, hashedPassword],
+        `INSERT INTO users (username, password) VALUES ($1, $2) RETURNING *`,
+        [username, hashedPassword],
       );
       return result.rows[0];
     } catch (error) {
@@ -27,10 +27,10 @@ export class UsersService {
     }
   }
 
-  async findPasswordUsername(name: string): Promise<User> {
+  async findPasswordUsername(username: string): Promise<User> {
     const result = await this.pool.query(
-      'SELECT * FROM users WHERE name = $1',
-      [name],
+      'SELECT * FROM users WHERE username = $1',
+      [username],
     );
     return result.rows[0];
   }

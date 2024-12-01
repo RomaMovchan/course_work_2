@@ -42,7 +42,7 @@ export class AuthService {
         return {
           access_token: token.access_token,
           refresh_token: token.refresh_token,
-        }
+        };
       } else {
         await this.tokensService.deleteAccessToken(token.access_token);
         await this.tokensService.deleteRefreshToken(token.access_token);

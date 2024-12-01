@@ -13,10 +13,10 @@ import { UsersModule } from '../users/users.module';
     UsersModule,
     JwtModule.register({
       secret: process.env.JWT_SECRET || 'secret',
-    })
+    }),
   ],
   controllers: [AuthController],
   providers: [AuthService, TokensService, AuthGuard],
-  exports: [TokensService]
+  exports: [TokensService],
 })
 export class AuthModule {}
