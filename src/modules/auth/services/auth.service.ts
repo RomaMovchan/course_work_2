@@ -1,16 +1,34 @@
-import { Injectable } from '@nestjs/common';
+import {
+  Inject,
+  Injectable,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from '../../users/users.service';
 import { TokensService } from './tokens.service';
 import * as bcrypt from 'bcrypt';
+import { Pool } from 'pg';
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly jwtService: JwtService,
     private readonly usersService: UsersService,
+    @Inject('PG_CONNECTION') private readonly pool: Pool,
     private readonly tokensService: TokensService,
   ) {}
+
+  async findTokenByUsername(name: any) {
+    try {
+      const result = await this.pool.query(
+        `SELECT * FROM users INNER JOIN tokens ON users.id = tokens.user_id WHERE users.username = $1`,
+        [name.username],
+      );
+      return result.rows[0];
+    } catch (error) {
+      throw new InternalServerErrorException('Database Error');
+    }
+  }
 
   async validateUser(name: string, password: string): Promise<any> {
     const user = await this.usersService.findPasswordUsername(name);

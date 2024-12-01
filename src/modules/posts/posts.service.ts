@@ -27,7 +27,9 @@ export class PostsService {
       const cachedPostsRedis: any = await this.redisCacheService.get(
         POST_REDIS_KEY,
       );
-      const posts: Post[] = cachedPostsRedis ? JSON.parse(cachedPostsRedis) : [];
+      const posts: Post[] = cachedPostsRedis
+        ? JSON.parse(cachedPostsRedis)
+        : [];
       posts.push(result.rows[0]);
       await this.redisCacheService.set(
         POST_REDIS_KEY,
@@ -36,7 +38,6 @@ export class PostsService {
       );
       return result.rows[0];
     } catch (error) {
-      console.log(error);
       throw new InternalServerErrorException('Database Error');
     }
   }

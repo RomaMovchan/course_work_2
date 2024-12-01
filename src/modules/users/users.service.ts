@@ -28,10 +28,14 @@ export class UsersService {
   }
 
   async findPasswordUsername(username: string): Promise<User> {
-    const result = await this.pool.query(
-      'SELECT * FROM users WHERE username = $1',
-      [username],
-    );
-    return result.rows[0];
+    try {
+      const result = await this.pool.query(
+        'SELECT * FROM users WHERE username = $1',
+        [username],
+      );
+      return result.rows[0];
+    } catch (error) {
+      throw new InternalServerErrorException('Database Error');
+    }
   }
 }

@@ -1,4 +1,4 @@
-import { Body, Controller, Post, UnauthorizedException } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UnauthorizedException } from '@nestjs/common';
 import { AuthService } from './services/auth.service';
 
 @Controller('auth')
@@ -6,9 +6,9 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('login')
-  async login(@Body() body: { name: string; password: string }) {
+  async login(@Body() body: { username: string; password: string }) {
     const user = await this.authService.validateUser(
-      body.name,
+      body.username,
       body.password,
     );
 
@@ -17,6 +17,11 @@ export class AuthController {
     }
 
     return this.authService.login(user);
+  }
+
+  @Get('get-token/:username')
+  async findTokenByUsername(@Param() username: any) {
+    return this.authService.findTokenByUsername(username);
   }
 
   @Post('refresh')

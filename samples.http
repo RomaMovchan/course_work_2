@@ -3,7 +3,7 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-  "username": "Test User1",
+  "username": "Test",
   "password": "password test"
 }
 
@@ -12,9 +12,13 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-  "username": "Test User1",
+  "username": "Test",
   "password": "password test"
 }
+
+### Get Token by username
+GET http://localhost:3000/auth/get-token/Test
+Content-Type: application/json
 
 ### Create Post
 POST http://localhost:3000/posts
@@ -23,7 +27,7 @@ Content-Type: application/json
 {
   "content": "test content redis 1",
   "title": "test title redis 1",
-  "user_id": 2
+  "user_id": 1
 }
 
 ### Get Posts
