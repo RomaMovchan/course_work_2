@@ -7,6 +7,6 @@ import { RedisModule } from '../../system-modules/redis.module';
 @Module({
   imports: [DbModule, RedisModule],
   controllers: [PostsController],
-  providers: [PostsService]
+  providers: [PostsService],
 })
 export class PostsModule {}

@@ -7,6 +7,6 @@ import { DbModule } from '../../system-modules/dbo.module';
   imports: [DbModule],
   controllers: [UsersController],
   providers: [UsersService],
-  exports: [UsersService]
+  exports: [UsersService],
 })
 export class UsersModule {}

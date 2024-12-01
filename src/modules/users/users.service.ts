@@ -2,7 +2,7 @@ import {
   BadRequestException,
   Inject,
   Injectable,
-  InternalServerErrorException
+  InternalServerErrorException,
 } from '@nestjs/common';
 import { CreateUserDto } from '../../dto/users.dto';
 import { Pool } from 'pg';

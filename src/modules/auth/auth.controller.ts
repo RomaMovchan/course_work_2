@@ -1,4 +1,12 @@
-import { BadRequestException, Body, Controller, Get, Param, Post, UnauthorizedException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { AuthService } from './services/auth.service';
 
 @Controller('auth')
@@ -11,10 +19,7 @@ export class AuthController {
     if (!username || !password) {
       throw new BadRequestException('Please provide full data');
     }
-    const user = await this.authService.validateUser(
-      username,
-      password,
-    );
+    const user = await this.authService.validateUser(username, password);
 
     if (!user) {
       throw new UnauthorizedException('Invalid username or password');

@@ -2,7 +2,7 @@ import {
   BadRequestException,
   Inject,
   Injectable,
-  InternalServerErrorException
+  InternalServerErrorException,
 } from '@nestjs/common';
 import { Pool } from 'pg';
 import { Post } from '../../models/posts.interface';
