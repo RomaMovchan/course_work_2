@@ -48,7 +48,6 @@ export class PostsService {
 
   async getAllPosts(): Promise<Post[]> {
     const cachedPosts = await this.redisCacheService.get(POST_REDIS_KEY);
-    console.log('cachedPosts', cachedPosts);
     if (cachedPosts) {
       return JSON.parse(cachedPosts as string);
     }
