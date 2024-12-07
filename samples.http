@@ -25,12 +25,12 @@ POST http://localhost:3000/posts
 Content-Type: application/json
 
 {
-  "content": "test content redis 1",
-  "title": "test title redis 1",
+  "content": "test content redis 2",
+  "title": "test title redis 2",
   "user_id": 1
 }
 
 ### Get Posts
 GET http://localhost:3000/posts
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTczMzA2MTI1NywiZXhwIjoxNzMzMDcyMDU3fQ.vi-tiFijwYVYnmY_ANVNMEqNmbVntx2DuAcBuaQ-ROc
+Authorization: Bearer "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRlc3QiLCJzdWIiOjUsImlhdCI6MTczMzA2ODYyNiwiZXhwIjoxNzMzMDc5NDI2fQ.NAztKUOmWs2Qc7YCbAVOnK5JIuBuPdeLjI6f9bNINVE

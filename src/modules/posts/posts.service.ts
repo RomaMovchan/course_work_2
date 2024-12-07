@@ -38,7 +38,7 @@ export class PostsService {
       await this.redisCacheService.set(
         POST_REDIS_KEY,
         JSON.stringify(posts),
-        3600,
+        60000,
       );
       return result.rows[0];
     } catch (error) {
